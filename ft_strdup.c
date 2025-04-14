@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucorrei <lucorrei@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 17:07:36 by lucorrei          #+#    #+#             */
-/*   Updated: 2025/04/14 15:25:08 by lucorrei         ###   ########.fr       */
+/*   Created: 2025/04/14 13:17:43 by lucorrei          #+#    #+#             */
+/*   Updated: 2025/04/14 18:01:40 by lucorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+char	*ft_strdup(const char *str)
 {
-	size_t	i;
+	char	*res;
+	size_t	size;
 
-	i = 0;
-	while (src[i] != 0 && i + 1 < size)
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	if (size)
-		dst[i] = 0;
-	return (ft_strlen(src));
+	res = 0;
+	size = 1 + ft_strlen(str);
+	res = (char *) ft_calloc(size, 1);
+	if (!res)
+		return (NULL);
+	if (ft_strlcpy(res, str, size) == size - 1)
+		return (res);
+	return (NULL);
 }

@@ -6,12 +6,12 @@
 /*   By: lucorrei <lucorrei@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:34:39 by lucorrei          #+#    #+#             */
-/*   Updated: 2025/04/14 12:03:57 by lucorrei         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:26:43 by lucorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 int	ft_isascii(int c)
 {
-	return (c >= 0 && c <= 128);
+	return (c >= 0 && c <= 127);
 }

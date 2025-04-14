@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucorrei <lucorrei@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 17:07:36 by lucorrei          #+#    #+#             */
-/*   Updated: 2025/04/14 15:25:08 by lucorrei         ###   ########.fr       */
+/*   Created: 2025/04/14 13:49:45 by lucorrei          #+#    #+#             */
+/*   Updated: 2025/04/14 14:02:46 by lucorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
+	char			*res;
+	unsigned int	i;
+	unsigned int	size;
 
+	size = ft_strlen(s) + 1;
+	res = 0;
+	res = ft_calloc(len + 1, 1);
+	if (!res)
+		return (NULL);
 	i = 0;
-	while (src[i] != 0 && i + 1 < size)
+	while (start + i < size && i < len)
 	{
-		dst[i] = src[i];
-		i++;
+		res[i] = s[start + i];
 	}
-	if (size)
-		dst[i] = 0;
-	return (ft_strlen(src));
+	return (res);
 }

@@ -6,12 +6,12 @@
 /*   By: lucorrei <lucorrei@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:05:36 by lucorrei          #+#    #+#             */
-/*   Updated: 2025/04/14 12:50:16 by lucorrei         ###   ########.fr       */
+/*   Updated: 2025/04/14 15:56:06 by lucorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 int	ft_toupper(int c)
 {
-    return (c - 32 * (c <= 'a' && c >= 'z'));
+	return (c - 32 * (c <= 'z' && c >= 'a'));
 }
