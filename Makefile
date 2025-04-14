@@ -1,6 +1,6 @@
 NAME = libft.a
 
-CFILES := $(wildcard **/*.c)
+CFILES := $(wildcard *.c)
 
 OBJS := $(CFILES:.c=.o)
 
@@ -8,15 +8,13 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-HEAD = includes/
-
 all: ${NAME}
 
 ${NAME}:  ${OBJS}
 	ar rcs libft.a ${OBJS}
 
-$(SRCDIR)%.o: ${SRCDIR}%.c
-	${CC} -c ${CFLAGS} -I${HEAD} $< -o $@
+%.o: %.c
+	${CC} -c ${CFLAGS} $< -o $@
 
 clean:
 	rm ${OBJS}

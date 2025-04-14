@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucorrei <lucorrei@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 14:53:42 by lucorrei          #+#    #+#             */
-/*   Updated: 2025/04/14 12:03:13 by lucorrei         ###   ########.fr       */
+/*   Created: 2025/04/14 12:12:54 by lucorrei          #+#    #+#             */
+/*   Updated: 2025/04/14 12:27:26 by lucorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+void	*ft_calloc(size_t nemb, size_t size)
 {
-    int	res;
-    int	sign;
+	unsigned char	*res;
+	size_t			i;
 
-    sign = 1;
-    res = 0;
-    if (*str == '-')
-    {
-        sign = -1;
-        str++;
-    }
-    while (ft_isdigit(*str))
-    {
-        res *= 10;
-        res += *str++ - '0';
-    }
-    return (sign * res);
+	if (!nemb || !size)
+		return (malloc(1));
+	res = 0;
+	res = (unsigned char *) malloc(nemb * size);
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (i < nemb * size)
+		res[i++] = 0;
+	return (res);
 }
