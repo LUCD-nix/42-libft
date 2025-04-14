@@ -6,7 +6,7 @@
 /*   By: lucorrei <lucorrei@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:53:42 by lucorrei          #+#    #+#             */
-/*   Updated: 2025/04/14 13:38:24 by lucorrei         ###   ########.fr       */
+/*   Updated: 2025/04/14 18:34:34 by lucorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ char		*ft_strnstr(const char *big, const char *little, size_t len);
 int			ft_atoi(const char *str);
 void		*ft_calloc(size_t nemb, size_t size);
 char		*ft_strdup(const char *str);
+char		*ft_strjoin(char const *s1, char const *s2);
+char		*ft_strtrim(char const *s1, char const *set);
 
 #endif // LIBFT_H
