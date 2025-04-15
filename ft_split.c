@@ -6,7 +6,7 @@
 /*   By: lucorrei <lucorrei@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 18:43:36 by lucorrei          #+#    #+#             */
-/*   Updated: 2025/04/15 11:51:43 by lucorrei         ###   ########.fr       */
+/*   Updated: 2025/04/15 12:10:16 by lucorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -48,7 +48,7 @@ static char	**_free_str_arr(char ***arr, int nelm)
 	return (res);
 }
 
-static char	**_browse_words(const char *s, char c, char ***res, int max)
+static char	**_copy_words(const char *s, char c, char ***res, int max)
 {
 	int		is_word;
 	int		word_count;
@@ -87,5 +87,5 @@ char	**ft_split(char const *s, char c)
 	res = ft_calloc(max + 1, sizeof(char *));
 	if (!res)
 		return (NULL);
-	return (_browse_words(s, c, &res, max));
+	return (_copy_words(s, c, &res, max));
 }
