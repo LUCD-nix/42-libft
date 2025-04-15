@@ -6,7 +6,7 @@
 /*   By: lucorrei <lucorrei@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:26:38 by lucorrei          #+#    #+#             */
-/*   Updated: 2025/04/15 16:34:38 by lucorrei         ###   ########.fr       */
+/*   Updated: 2025/04/15 22:38:13 by lucorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -38,7 +38,7 @@ int	main(int argc, char **argv)
 		write(1, "please provide at least single string as input\n", 47);
 		return (1);
 	}
-	new = ft_lstnew(argv[argc--]);
+	new = ft_lstnew(argv[--argc]);
 	while (argc > 1)
 	{
 		argc--;
