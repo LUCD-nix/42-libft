@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucorrei <lucorrei@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:26:38 by lucorrei          #+#    #+#             */
-/*   Updated: 2025/04/15 22:46:44 by lucorrei         ###   ########.fr       */
+/*   Updated: 2025/04/15 22:38:13 by lucorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+int	ft_lstsize(t_list *lst)
 {
-	if (!lst || !f)
-		return ;
-	while (lst)
-	{
-		(*f)(lst->content);
-		lst = lst->next;
-	}
-}
+	int		res;
+	t_list	*cursor;
 
-char	helper(unsigned int i, char c)
-{
-	(void) i;
-	return ft_toupper(c);
-}
-void	test_fn(void *str)
-{
-	ft_putendl_fd(ft_strmapi((char *)str, &helper), 1);
+	if (lst == NULL)
+		return (0);
+	res = 1;
+	cursor = lst;
+	while (cursor->next != NULL)
+	{
+		res++;
+		cursor = cursor->next;
+	}
+	return (res);
 }
 /*
 int	main(int argc, char **argv)
@@ -39,7 +35,7 @@ int	main(int argc, char **argv)
 
 	if (argc == 1)
 	{
-		ft_putendl_fd("please provide at least single string as input", 1);
+		write(1, "please provide at least single string as input\n", 47);
 		return (1);
 	}
 	new = ft_lstnew(argv[--argc]);
@@ -50,7 +46,7 @@ int	main(int argc, char **argv)
 		new = ft_lstnew(argv[argc]);
 		ft_lstadd_front(&old, new);
 	}
-	ft_putendl_fd("function is ft_putendl(ft_strmap(ft_toupper))", 1);
-	ft_lstiter(new, &test_fn);
+	ft_putendl_fd("list size", 1);
+	ft_putnbr_fd(ft_lstsize(new), 1);
 	return (0);
-}*/
+} */

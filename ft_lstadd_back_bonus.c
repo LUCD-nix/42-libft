@@ -1,41 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucorrei <lucorrei@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:26:38 by lucorrei          #+#    #+#             */
-/*   Updated: 2025/04/15 16:32:29 by lucorrei         ###   ########.fr       */
+/*   Updated: 2025/04/15 23:06:25 by lucorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*new_node;
+	t_list	*last;
 
-	new_node = 0;
-	new_node = ft_calloc(1, sizeof(t_list *));
-	if (!new_node)
-		return (NULL);
-	new_node->next = NULL;
-	new_node->content = content;
-	return (new_node);
-}
-/*
-int	main(int argc, char **argv)
-{
-	t_list *new;
-
-	if (argc != 2)
+	if (!new || !lst)
+		return ;
+	if (!*lst)
 	{
-		write(1, "please provide a single string as input\n", 40);
-		return (1);
+		*lst = new;
+		return ;
 	}
-	new = ft_lstnew(argv[1]);
-	write(1, "new->content =", 14);
-	write(1, new->content, ft_strlen(new->content));
-	write(1, "\n", 1);
-	return (0);
-}*/
+	last = ft_lstlast(*lst);
+	last->next = new;
+	new->next = NULL;
+}

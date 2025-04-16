@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucorrei <lucorrei@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 22:43:59 by lucorrei          #+#    #+#             */
-/*   Updated: 2025/04/15 23:08:22 by lucorrei         ###   ########.fr       */
+/*   Created: 2025/04/15 15:26:38 by lucorrei          #+#    #+#             */
+/*   Updated: 2025/04/15 16:38:34 by lucorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_list	*start;
-	t_list	*elem;
+	t_list	*cursor;
 
-	if (!f || !lst || !del)
+	if (!lst)
 		return (NULL);
-	while (lst)
-	{
-		elem = ft_lstnew((*f)(lst->content));
-		if (!elem)
-		{
-			ft_lstclear(&start, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&start, elem);
-		lst = lst->next;
-	}
-	return (start);
+	cursor = lst;
+	while (cursor->next != NULL)
+		cursor = cursor->next;
+	return (cursor);
 }
-		
