@@ -6,7 +6,7 @@
 /*   By: lucorrei <lucorrei@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 18:19:00 by lucorrei          #+#    #+#             */
-/*   Updated: 2025/04/16 19:45:12 by lucorrei         ###   ########.fr       */
+/*   Updated: 2025/04/17 13:55:24 by lucorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -35,7 +35,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 			beg < len)
 		beg++;
 	end = 0;
-	while (*s1 && _char_in_string(s1[len - end - 1], set))
+	while (beg != len \
+			&& *s1 \
+			&& _char_in_string(s1[len - end - 1], set))
 		end++;
 	res = 0;
 	res = ft_calloc(len - beg - end + 1, 1);
