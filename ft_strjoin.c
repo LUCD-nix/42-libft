@@ -6,7 +6,7 @@
 /*   By: lucorrei <lucorrei@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 18:08:22 by lucorrei          #+#    #+#             */
-/*   Updated: 2025/04/24 16:02:11 by lucorrei         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:26:49 by lucorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -16,8 +16,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	char	*res;
 	int		total;
 
-	if (!s1 || !s2)
-		return (NULL);
 	total = ft_strlen(s1) + ft_strlen(s2) + 1;
 	res = 0;
 	res = ft_calloc(total, 1);
