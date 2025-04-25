@@ -6,12 +6,12 @@
 /*   By: lucorrei <lucorrei@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:53:42 by lucorrei          #+#    #+#             */
-/*   Updated: 2025/04/16 17:44:48 by lucorrei         ###   ########.fr       */
+/*   Updated: 2025/04/25 17:04:40 by lucorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+int	ft_atoi(char *str)
 {
 	int	res;
 	int	sign;
@@ -31,6 +31,16 @@ int	ft_atoi(const char *str)
 		res += *(str++) - '0';
 	}
 	return (sign * res);
+}
+
+int	ft_atoi_consume(char **str)
+{
+	int	res;
+
+	res = ft_atoi(*str);
+	while (ft_isnumeric(**str))
+		*str++;
+	return (res);
 }
 /*
 int	main(int argc, char **argv)
