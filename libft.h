@@ -6,7 +6,7 @@
 /*   By: lucorrei <lucorrei@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:53:42 by lucorrei          #+#    #+#             */
-/*   Updated: 2025/04/25 17:04:27 by lucorrei         ###   ########.fr       */
+/*   Updated: 2025/04/28 16:05:35 by lucorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,16 @@ char		*ft_strnstr(const char *big, const char *little, size_t len);
 int			ft_atoi(char *str);
 int			ft_atoi_consume(char **str);
 char		*ft_itoa(int n);
+char		*ft_itoa_16(int n);
+char		*ft_uitoa(unsigned int n);
+char		*ft_ultoa_16(size_t nn);
 
 void		*ft_calloc(size_t nemb, size_t size);
 char		*ft_strdup(const char *str);
-char		*ft_strjoin(char  *s1, char  *s2);
-char		*ft_strjoin_free_first(char  *s1, char  *s2);
-char		*ft_strjoin_free_second(char  *s1, char  *s2);
-char		*ft_strjoin_free_both(char  *s1, char  *s2);
+char		*ft_strjoin(char *s1, char *s2);
+char		*ft_strjoin_free_first(char *s1, char *s2);
+char		*ft_strjoin_free_second(char *s1, char *s2);
+char		*ft_strjoin_free_both(char *s1, char *s2);
 char		*ft_strtrim(char const *s1, char const *set);
 char		**ft_split(char const *s, char c);
 
