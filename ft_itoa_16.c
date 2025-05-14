@@ -20,8 +20,7 @@ static int	_get_size(long nn)
 		return (2);
 	if (nn < 0)
 	{
-		nn *= -1;
-		res++;
+		return (9);
 	}
 	while (nn)
 	{
@@ -51,20 +50,17 @@ char	*ft_itoa_16(int n)
 {
 	long	nn;
 	int		size;
-	int		sign;
 	char	*res;
 	char	*to_write;
 
 	nn = n;
 	size = _get_size(nn);
-	sign = (nn >= 0) - (nn < 0);
 	res = ft_calloc(size, 1);
 	if (!res)
 		return (NULL);
-	nn *= sign;
-	if (sign == -1)
+	if (nn < 0)
 	{
-		res[0] = '-';
+		nn += 2L * 2147483648L;
 	}
 	res[size - 1] = 0;
 	to_write = res + size - 2;

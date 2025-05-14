@@ -27,3 +27,15 @@ char	*ft_strdup(const char *str)
 		return (res);
 	return (NULL);
 }
+
+char	*ft_chr_to_str(char c)
+{
+	char	*res;
+
+	res = 0;
+	res = ft_calloc(2, 1);
+	if (!res)
+		return (NULL);
+	res[0] = c;
+	return (res);
+}

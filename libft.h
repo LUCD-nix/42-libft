@@ -55,6 +55,7 @@ char		*ft_ultoa_16(size_t nn);
 
 void		*ft_calloc(size_t nemb, size_t size);
 char		*ft_strdup(const char *str);
+char		*ft_chr_to_str(char c);
 char		*ft_strjoin(char *s1, char *s2);
 char		*ft_strjoin_free_first(char *s1, char *s2);
 char		*ft_strjoin_free_second(char *s1, char *s2);
