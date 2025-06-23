@@ -50,6 +50,7 @@ char		*ft_strnstr(const char *big, const char *little, size_t len);
 
 int			ft_atoi(char *str);
 int			ft_atoi_consume(char **str);
+long		ft_atol(char *str);
 char		*ft_itoa(int n);
 char		*ft_itoa_16(int n);
 char		*ft_uitoa(unsigned int n);
@@ -84,5 +85,6 @@ void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 char		*get_next_line(int fd);
+int			ft_printf(const char *str, ...);
 
 #endif // LIBFT_H
