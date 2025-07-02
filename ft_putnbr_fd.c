@@ -20,17 +20,17 @@ void	ft_putnbr_fd(int nb, int fd)
 	if (n < 0)
 	{
 		n *= -1;
-		write(fd, "-", 1);
+		(void)! write(fd, "-", 1);
 	}
 	if (n < 10)
 	{
 		to_print = n + '0';
-		write(fd, &to_print, 1);
+		(void)! write(fd, &to_print, 1);
 		return ;
 	}
 	to_print = n % 10 + '0';
 	ft_putnbr_fd(n / 10, fd);
-	write(fd, &to_print, 1);
+	(void)! write(fd, &to_print, 1);
 }
 
 /*

@@ -56,6 +56,7 @@ static char	**_copy_words(const char *s, char c, char ***res, int max)
 
 	word_count = 0;
 	is_word = 0;
+	beg = 0;
 	while (word_count < max)
 	{
 		if (*s != c && !is_word)
@@ -73,7 +74,6 @@ static char	**_copy_words(const char *s, char c, char ***res, int max)
 		}
 		s++;
 	}
-	(*res)[word_count] = NULL;
 	return (*res);
 }
 
