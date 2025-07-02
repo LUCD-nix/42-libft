@@ -62,7 +62,7 @@ BONUS_OBJS := $(BONUS:.c=.o)
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -ggdb
+CFLAGS = -Wall -Wextra -Werror -O3
 
 all: ${NAME}
 
