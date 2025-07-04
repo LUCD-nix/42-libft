@@ -21,7 +21,7 @@ static double	__decimal(char *str)
 	i = 0;
 	while (ft_isdigit(*++str) && ++i)
 	{
-		res += ((*str++) - '0') / (pow(10.0, -1 * i));
+		res += ((*str) - '0') / (pow(10.0, i));
 	}
 	return (res);
 }
