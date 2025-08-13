@@ -23,6 +23,7 @@
 # define IS_NEG 128
 # define FORMAT_ERROR 256
 # define IS_CHAR 512
+# define IS_NUMERIC 1024
 # define INT_MIN_FTPF -2147483648
 
 # define FLAGS "-0# +%"
@@ -33,6 +34,7 @@ typedef struct s_format
 {
 	size_t	min;
 	size_t	max;
+	size_t	size;
 	char	*string;
 	short	formatting;
 }	t_format;

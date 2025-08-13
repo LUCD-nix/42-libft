@@ -9,13 +9,36 @@
 /*   Updated: 2025/05/11 17:47:23 by lucorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 void	free_format(void *to_free)
 {
 	free(((t_format *)to_free)->string);
 	free(to_free);
 }
+// void	iter_to_stdout(void *a)
+// {
+// 	char		*str;
+//
+// 	str = ((t_format *)a)->string;
+// 	ft_putstr_fd(str, 1);
+// }
+//
+// int	count_printed(t_list *lst)
+// {
+// 	t_format	*tmp;
+// 	int			count;
+//
+// 	count = 0;
+// 	tmp = 0;
+// 	while (lst)
+// 	{
+// 		tmp = lst->content;
+// 		count += ft_strlen(tmp->string);
+// 		lst = lst->next;
+// 	}
+// 	return (count);
+// }
 
 int	check_and_print(t_list *lst)
 {
@@ -33,13 +56,9 @@ int	check_and_print(t_list *lst)
 			ft_lstclear(&first, &free_format);
 			return (-1);
 		}
-		ft_putstr_fd(tmp->string, 1);
-		res += ft_strlen(tmp->string);
-		if (IS_CHAR & tmp->formatting && !ft_memcmp(tmp->string, "\0\0", 2))
-		{
-			ft_putchar_fd(0, 1);
-			res += 1;
-		}
+		if (write(1, tmp->string, tmp->size) == -1)
+			break ;
+		res += tmp->size;
 		lst = lst->next;
 	}
 	ft_lstclear(&first, &free_format);

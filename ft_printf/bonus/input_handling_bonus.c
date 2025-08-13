@@ -9,14 +9,31 @@
 /*   Updated: 2025/05/12 12:48:31 by lucorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-void	make_format(t_list **lst)
+void	make_format(char **cursor, t_list **lst)
 {
 	t_format	*format;
 
 	format = ft_calloc(1, sizeof(t_format));
 	ft_lstadd_back(lst, ft_lstnew(format));
+	if (**cursor == '%')
+		return ;
+	while (chr_in_str(**cursor, FLAGS))
+	{
+		parse_flags(**cursor, format);
+		(*cursor)++;
+	}
+	format->min = (size_t) ft_atoi_consume(cursor);
+	if (**cursor == '.')
+	{
+		(*cursor)++;
+		format->max = (size_t) ft_atoi_consume(cursor);
+	}
+	else
+		format->max = -1UL;
+	if (format->min)
+		format->formatting |= NEEDS_ALIGN;
 }
 
 void	handle_types2(char **cursor, va_list *args, t_format *to_add)
@@ -24,7 +41,10 @@ void	handle_types2(char **cursor, va_list *args, t_format *to_add)
 	char	*temp;
 
 	if (**cursor == 'u')
+	{
+		to_add->formatting |= IS_NUMERIC;
 		to_add->string = ft_uitoa(va_arg(*args, int));
+	}
 	else if (**cursor == 's')
 	{
 		temp = va_arg(*args, char *);
@@ -69,10 +89,20 @@ void	handle_types1(char **cursor, t_list **lst, va_list *args)
 
 static void	handle_percent(char **s, char **cursor, va_list *args, t_list **lst)
 {
+	t_format	*just_added;
+
 	save_regular_str(s, cursor, lst);
 	(*cursor)++;
-	make_format(lst);
+	make_format(cursor, lst);
 	handle_types1(cursor, lst, args);
+	just_added = (t_format *) ft_lstlast(*lst)->content;
+	if (just_added != NULL)
+	{
+		if (IS_CHAR & just_added->formatting)
+			just_added->size = 1;
+		else
+			just_added->size = ft_strlen(just_added->string);
+	}
 	*s = (*cursor) + 1;
 }
 

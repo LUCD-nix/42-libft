@@ -9,7 +9,7 @@
 /*   Updated: 2025/05/13 15:36:12 by lucorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 void	handle_pointers(va_list *args, t_format *to_add)
 {
@@ -33,7 +33,10 @@ void	save_regular_str(char **s, char **cursor, t_list **lst)
 	temp = ft_calloc(*cursor - *s + 1, 1);
 	ft_strlcpy(temp, *s, *cursor - *s + 1);
 	regular = ft_calloc(1, sizeof(t_format));
+	if (regular == NULL)
+		return ;
 	regular->string = temp;
+	regular->size = ft_strlen(temp);
 	regular->max = -1UL;
 	ft_lstadd_back(lst, ft_lstnew(regular));
 	*s = *cursor;
@@ -50,8 +53,23 @@ char	chr_in_str(char c, char *str)
 	return (0);
 }
 
+void	parse_flags(char cursor, t_format *format)
+{
+	if (cursor == '+')
+		format->formatting |= NUMBER_PLUS;
+	if (cursor == ' ')
+		format->formatting |= NUMBER_SPACE;
+	if (cursor == '#')
+		format->formatting |= HEX_SIGNAL;
+	if (cursor == '-')
+		format->formatting |= ALIGN_LEFT;
+	if (cursor == '0')
+		format->formatting |= ZERO_PAD;
+}
+
 void	handle_ints(char type, t_format *to_add, int integer)
 {
+	to_add->formatting |= IS_NUMERIC;
 	if (type == 'd' || type == 'i')
 	{
 		if (integer < 0)

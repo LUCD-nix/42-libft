@@ -9,33 +9,47 @@
 /*   Updated: 2025/05/10 18:10:42 by lucorrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
-
-void	ft_toupper_iter(unsigned int i, char *c)
-{
-	if (!c)
-		return ;
-	(void) i;
-	*c = ft_toupper(*c);
-}
+#include "../ft_printf.h"
 
 void	format_string(void *ptr)
 {
 	t_format	*to_modify;
 	short		formatting;
+	char		*to_prepend;
 
 	to_modify = (t_format *) ptr;
 	formatting = to_modify->formatting;
-	if (IS_NEG & formatting)
+	if (ZERO_PAD & formatting)
+		handle_width(ptr);
+	to_prepend = prepend(formatting);
+	if (to_prepend)
 	{
-		to_modify->string = ft_strjoin_free_second("-", to_modify->string);
-	}
-	if (HEX_SIGNAL & formatting)
-	{
-		to_modify->string = ft_strjoin_free_second("0x", to_modify->string);
+		to_modify->size += ft_strlen(to_prepend);
+		to_modify->string = ft_strjoin_free_both(to_prepend, to_modify->string);
 	}
 	if (TO_UPPER & formatting)
 	{
 		ft_striteri(to_modify->string, &ft_toupper_iter);
 	}
+	if (!(ZERO_PAD & formatting))
+		handle_width(ptr);
+}
+
+void	handle_width(void *fmt_ptr)
+{
+	short		fmt;
+	t_format	*item;
+
+	item = (t_format *)fmt_ptr;
+	if (!item || !item->string)
+		return ;
+	fmt = item->formatting;
+	if (item->max < item->size)
+		handle_max(item);
+	if (!(fmt & NEEDS_ALIGN))
+		return ;
+	else if (fmt & ALIGN_LEFT)
+		item->string = align_left(item);
+	else
+		item->string = align_right(item);
 }
