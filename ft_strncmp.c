@@ -16,6 +16,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	const unsigned char	*ss1;
 	const unsigned char	*ss2;
 
+	if (s1 == NULL || s2 == NULL)
+		return (-1);
 	if (n == 0)
 		return (0);
 	ss1 = (const unsigned char *) s1;
@@ -34,8 +36,8 @@ int	ft_strcmp(const char *s1, const char *s2)
 	const unsigned char	*ss1;
 	const unsigned char	*ss2;
 
-	if (!s1 || !s2)
-		return (0);
+	if (s1 == NULL || s2 == NULL)
+		return (-1);
 	ss1 = (const unsigned char *) s1;
 	ss2 = (const unsigned char *) s2;
 	while (*ss2 && *ss1 && *ss1 == *ss2)
