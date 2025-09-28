@@ -85,10 +85,7 @@ char	*align_right(t_format *item)
 		filler = ' ';
 	res = ft_calloc(item->min + 1, sizeof(*res));
 	if (!res)
-	{
-		free(item->string);
-		return (NULL);
-	}
+		return (free(item->string), NULL);
 	difference = item->min - item->size;
 	ft_memset(res, filler, difference);
 	ft_memcpy(res + difference, item->string, item->size);
