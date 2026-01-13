@@ -31,13 +31,13 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	len = ft_strlen(s1);
 	beg = 0;
-	while (_char_in_string(s1[beg], set) && \
-			beg < len)
+	while (_char_in_string(s1[beg], set)
+		&& beg < len)
 		beg++;
 	end = 0;
-	while (beg != len \
-			&& *s1 \
-			&& _char_in_string(s1[len - end - 1], set))
+	while (beg != len
+		&& *s1
+		&& _char_in_string(s1[len - end - 1], set))
 		end++;
 	res = 0;
 	res = ft_calloc(len - beg - end + 1, 1);
